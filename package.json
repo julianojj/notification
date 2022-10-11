@@ -1,11 +1,12 @@
 {
   "name": "notification",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "repository": "https://github.com/julianojj/notification.git",
   "author": "Juliano Silva",
   "license": "MIT",
   "devDependencies": {
+    "@types/amqplib": "^0.8.2",
     "@types/ejs": "^3.1.1",
     "@types/jest": "^29.1.2",
     "@types/node": "^18.8.4",
@@ -18,9 +19,11 @@
     "typescript": "^4.8.4"
   },
   "scripts": {
-    "test": "yarn tsc && jest ./dist/test"
+    "test": "yarn tsc && jest ./dist/test",
+    "start": "yarn tsc && node ./dist/src/main.js"
   },
   "dependencies": {
+    "amqplib": "^0.10.3",
     "ejs": "^3.1.8",
     "nodemailer": "^6.8.0"
   }

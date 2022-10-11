@@ -1,10 +1,14 @@
+import { randomUUID } from 'crypto'
+import { Log } from '../domain/entities/Log'
+import { LogRepository } from '../domain/repositories/LogRepository'
 import { Mail } from '../infra/adapters/Mail'
 import { Template } from '../infra/adapters/Template'
 
 export class SendNotificationUserCreated {
     constructor(
+        readonly logRepository: LogRepository,
         readonly template: Template,
-        readonly mail: Mail
+        readonly mail: Mail,
     ) { }
 
     async execute(input: SendNotificationUserCreatedInput): Promise<SendNotificationUserCreatedOutput> {
@@ -22,11 +26,22 @@ export class SendNotificationUserCreated {
                 subject: 'Obrigado por inscrever-se!',
                 html
             })
-            console.log(`Send message to user: ${input.id}`)
+            const log = new Log(
+                randomUUID(),
+                `Send Message to user: ${input.id}`,
+                new Date()
+            )
+            await this.logRepository.save(log)
             return {
                 success: true
             }
         } catch (err) {
+            const log = new Log(
+                randomUUID(),
+                `Error send Message to user: ${input.id}`,
+                new Date()
+            )
+            await this.logRepository.save(log)
             return {
                 success: false
             }

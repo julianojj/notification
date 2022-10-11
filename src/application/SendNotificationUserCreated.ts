@@ -22,6 +22,7 @@ export class SendNotificationUserCreated {
                 subject: 'Obrigado por inscrever-se!',
                 html
             })
+            console.log(`Send message to user: ${input.id}`)
             return {
                 success: true
             }
@@ -33,7 +34,7 @@ export class SendNotificationUserCreated {
     }
 }
 
-type SendNotificationUserCreatedInput = {
+export type SendNotificationUserCreatedInput = {
     id: string,
     name: string,
     email: string

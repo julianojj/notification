@@ -30,6 +30,8 @@ dotenv: v16.0.3
 eslint: v8.25.0
 nodemailer: v6.8.0
 ejs: v3.1.8
+mongodb: v4.10.0
+jsonwebtoken: v8.5.1
 ```
 
 ## Como iniciar o projeto?

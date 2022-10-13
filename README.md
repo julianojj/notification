@@ -39,8 +39,8 @@ MAIL_SERVICE=yourSMTP
 MAIL_NAME=yourName
 MAIL_USER=yourEmail
 MAIL_PASS=yourPassword
-RABBITMQ_USER=yourUser
-RABBITMQ_PASS=yourPassword
+RABBITMQ_URL=yourRabbitMQConnectionURL
+MONGODB_URL=yourMongoDBConnectionURL
 ```
 
 Logo após, basta rodar os seguintes comandos:

@@ -4,10 +4,10 @@ import { Ejs } from './infra/adapters/Ejs'
 import { Nodemailer } from './infra/adapters/Nodemailer'
 import { RabbitMQ } from './infra/adapters/RabbitMQ'
 import { NotificationConsumer } from './infra/consumer/NotificationConsumer'
-import { LogRepositoryMemory } from './infra/repositories/LogRepositoryMemory'
+import { LogRepositoryMongoDB } from './infra/repositories/LogRepositoryMongoDB'
 
 (async () => {
-    const logRepository = new LogRepositoryMemory()
+    const logRepository = new LogRepositoryMongoDB()
     const template = new Ejs()
     const mail = new Nodemailer()
     const queue = new RabbitMQ()

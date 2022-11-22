@@ -10,6 +10,7 @@ export class LogRepositoryMongoDB implements LogRepository {
     }
 
     async save(log: Log): Promise<void> {
+        console.log(log)
         await this.connection.connect()
         const collection = this.connection.db('notification').collection('logs')
         await collection.insertOne(log)
@@ -18,13 +19,13 @@ export class LogRepositoryMongoDB implements LogRepository {
     async findAll(): Promise<Log[]> {
         await this.connection.connect()
         const collection = this.connection.db('notification').collection('logs')
-        const rows = await collection.find().toArray()
+        const logsData = await collection.find().toArray()
         const logs: Log[] = []
-        for (const data of rows) {
+        for (const logData of logsData) {
             logs.push(new Log(
-                data.id, 
-                data.content, 
-                data.createdAt
+                logData.id, 
+                logData.content, 
+                logData.createdAt
             ))
         }
         return logs
